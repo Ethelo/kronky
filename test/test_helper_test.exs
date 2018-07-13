@@ -59,8 +59,8 @@ defmodule Kronky.TestHelperTest do
       "string" => "foo bar baz",
       "integer" => 23,
       "float" => 10.32,
-      "boolean1" => "false",
-      "boolean2" => "true",
+      "boolean1" => false,
+      "boolean2" => true,
       "enum" => "FAA",
       "nillable1" => nil,
       "nillable2" => "beez",
@@ -166,7 +166,7 @@ defmodule Kronky.TestHelperTest do
     evaluate_schema schema: ValidSchema
 
     test "creates function" do
-      assert {:evaluate_graphql, 1} in __MODULE__.__info__(:exports)
+      :erlang.function_exported(__MODULE__, :evaluate_graphql, 1)
     end
 
   end

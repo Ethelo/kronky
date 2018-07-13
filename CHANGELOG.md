@@ -1,4 +1,12 @@
 
+v0.5.1 (2018-07-13)
+
+### Enhancements
+  
+### BugFixes
+  * Makes tests pas
+  * Adds convert_to_payload matching `{:error,  %Ecto.Changeset{valid?: false} }`
+  
 v0.5.0 (2018-02-01)
 
 ### Enhancements

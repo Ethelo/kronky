@@ -266,6 +266,10 @@ defmodule Kronky.Payload do
 
   def convert_to_payload({:error, list}) when is_list(list), do: error_payload(list)
 
+  def convert_to_payload({:error, %Ecto.Changeset{valid?: false} = changeset}) do
+    changeset |> extract_messages() |> error_payload
+  end
+
   def convert_to_payload(%Ecto.Changeset{valid?: false} = changeset) do
     changeset |> extract_messages() |> error_payload
   end
