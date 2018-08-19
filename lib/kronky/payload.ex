@@ -330,8 +330,15 @@ defmodule Kronky.Payload do
     field |> to_string() |> Absinthe.Utils.camelize(lower: true)
   end
 
+  defp convert_options(%ValidationMessage{} = message) do
+    options = message.options |> Enum.map(fn {key, value} -> %{key: to_string(key), value: to_string(value)} end)
+    %{message | options: options}
+  end
+
   defp prepare_message(%ValidationMessage{} = message) do
-    convert_field_name(message)
+    message
+    |> convert_field_name()
+    |> convert_options()
   end
 
   defp prepare_message(message) when is_binary(message) do

@@ -89,7 +89,7 @@ defmodule Kronky.PayloadTest do
       changeset = {%{}, %{title: :string, title_lang: :string}}
         |> Ecto.Changeset.cast(%{}, [:title, :title_lang])
         |> add_error(:title, "error 1")
-        |> add_error(:title, "error 2")
+        |> add_error(:title, "error 2", opt1: "option 1")
         |> add_error(:title_lang, "error 3")
       resolution = resolution(changeset)
 
@@ -97,7 +97,7 @@ defmodule Kronky.PayloadTest do
 
       messages = [
         %ValidationMessage{code: :unknown, message: "error 1", template: "error 1", field: :title, key: :title},
-        %ValidationMessage{code: :unknown, message: "error 2", template: "error 2", field: :title, key: :title},
+        %ValidationMessage{code: :unknown, message: "error 2", template: "error 2", field: :title, key: :title, options: [%{key: "opt1", value: "option 1"}]},
         %ValidationMessage{code: :unknown, message: "error 3", template: "error 3", field: :titleLang, key: :titleLang},
       ]
 
