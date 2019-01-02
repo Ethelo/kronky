@@ -40,7 +40,7 @@ defmodule Kronky.ValidationMessageTypes do
   """
   use Absinthe.Schema.Notation
 
-  #simplify access to reusable descriptions
+  # simplify access to reusable descriptions
   @descs %{
     validation_message: """
       Validation messages are returned when mutation input does not meet the requirements.
@@ -57,7 +57,7 @@ defmodule Kronky.ValidationMessageTypes do
       set to optional in our API. This allows 'required field' messages
       to be returned in the same manner as other validations. The only exceptions
       are id fields, which may be required to perform updates or deletes.
-    """  ,
+    """,
     field: "The input field that the error applies to. The field can be used to
     identify which field the error message should be displayed next to in the
     presentation layer.
@@ -75,7 +75,8 @@ defmodule Kronky.ValidationMessageTypes do
 
     This message may change without notice, so we do not recommend you match against the text.
     Instead, use the *code* field for matching.",
-    template: "A template used to generate the error message, with placeholders for option substiution.
+    template:
+      "A template used to generate the error message, with placeholders for option substiution.
 
     Example: `Username must be at least {count} characters`
 
@@ -88,20 +89,19 @@ defmodule Kronky.ValidationMessageTypes do
     TODO: Add list",
     option_key: "The name of a variable to be subsituted in a validation message template",
     option_value: "The value of a variable to be substituted in a validation message template",
-    option_list: "A list of substitutions to be applied to a validation message template",
-    }
+    option_list: "A list of substitutions to be applied to a validation message template"
+  }
 
   object :validation_option do
-    field :key, non_null(:string), description: @descs.option_key
-    field :value, non_null(:string), description: @descs.option_value
+    field(:key, non_null(:string), description: @descs.option_key)
+    field(:value, non_null(:string), description: @descs.option_value)
   end
 
   object :validation_message, description: @descs.validation_message do
-    field :field, :string, description: @descs.field
-    field :message, :string, description: @descs.message
-    field :code, non_null(:string), description: @descs.code
-    field :template, :string, description: @descs.template
-    field :options, list_of(:validation_option), description: @descs.option_list
+    field(:field, :string, description: @descs.field)
+    field(:message, :string, description: @descs.message)
+    field(:code, non_null(:string), description: @descs.code)
+    field(:template, :string, description: @descs.template)
+    field(:options, list_of(:validation_option), description: @descs.option_list)
   end
-
 end
