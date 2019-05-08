@@ -1,3 +1,10 @@
+# Absinthe Error Payloads
+
+I have not had the time to keep this library up to date. There's a great fork of this that is maintained - so I recommend you check it out instead!
+https://github.com/mirego/absinthe-error-payload
+
+Thanks Mirego!
+
 # Kronky
 
 Kronky bridges the gap between [Ecto](https://hexdocs.pm/ecto/Ecto.html) and [Absinthe GraphQL](http://absinthe-graphql.org/) by listing validation messages in a mutation payload.
