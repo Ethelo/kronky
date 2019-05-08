@@ -4,7 +4,7 @@ defmodule Kronky.ChangesetParser do
   Currently *does not* support nested errors
   """
 
-  import Ecto.Changeset, only: ["traverse_errors": 2]
+  import Ecto.Changeset, only: [traverse_errors: 2]
   alias Kronky.ValidationMessage
 
   @doc "Extract a nested map of raw errors from a changeset
